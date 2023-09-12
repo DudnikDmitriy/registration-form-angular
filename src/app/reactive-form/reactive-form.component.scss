@@ -1,0 +1,30 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 360px;
+    height: fit-content;
+    margin: 0 auto;
+    background: rgb(210,213,218);
+    background: linear-gradient(0deg, rgba(210,213,218,1) 0%, rgba(9,52,143,0.2497373949579832) 100%);
+    border-radius: 10px;
+    padding-top: 15px;
+}
+
+mat-form-field {
+    width: 300px;
+    border-radius:20px;
+}
+
+.mat-calendar{
+    align-items: center;
+}

@@ -1,0 +1,58 @@
+<form (submit)="sendForm()" [formGroup]="group" class="example-form">
+    <div class="container">
+        <div class="content">
+            <mat-form-field class="example-full-width bg-tr" appearance="fill">
+                <mat-label class="bg-tr">Enter your name</mat-label>
+                <input formControlName="firstName" matInput>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter your last name</mat-label>
+                <input formControlName="lastName" matInput>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Enter your date of birth</mat-label>
+                <input formControlName="dateOfBirth" matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter your email</mat-label>
+                <input formControlName="email" matInput>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Framework</mat-label>
+                <mat-select formControlName="framework">
+                    <mat-option *ngFor="let framework of jsFrameworks | keyvalue" [value]="framework.key">
+                        {{framework.key}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Framework version</mat-label>
+                <mat-select formControlName="frameworkVersion">
+                    <mat-option *ngFor="let framework of jsFrameworks[group.get('framework')?.value]" [value]="framework">
+                        {{framework}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            
+            <mat-form-field appearance="fill">
+                <mat-label>Your hobbies</mat-label>
+                <mat-select formControlName="hobby" multiple>
+                    <mat-option>Not selected</mat-option>
+                    <mat-optgroup *ngFor="let group of hobby" [label]="group.name" [disabled]="group.disabled">
+                        <mat-option *ngFor="let hobby of group.information" [value]="{name: group.name, duration: hobby.duration}">
+                            {{hobby.duration}}
+                        </mat-option>
+                    </mat-optgroup>
+                </mat-select>
+            </mat-form-field>
+            <button mat-button color="primary">Submit</button>
+        </div>
+    </div>
+</form>
